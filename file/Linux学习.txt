@@ -1,0 +1,59 @@
+profile java环境变量配置
+#java environment
+export JAVA_HOME=/opt/mysoft/jdk1.8.0_171
+export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export PATH=$PATH:$JAVA_HOME/bin
+
+重新加载环境变量
+source /etc/profile 
+
+设置开机启动
+systemctl enable mysqld
+
+查看mysql状态
+ps -aux | grep mysqld
+
+进入mysql
+mysql -uroot -p
+
+启动mysql报错
+
+libaio.so.1:
+
+解决
+rpm -qa|grep libaio   
+yum install  libaio-devel.x86_64
+
+
+
+centos安装mysql
+
+1.下载mysql的repo源
+    如果没有 wget 先yum install -y wget
+    wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+2.安装mysql-community-release-el7-5.noarch.rpm包
+    非 root 用户 加上 sudo
+    rpm -ivh mysql-community-release-el7-5.noarch.rpm
+3.安装mysql服务
+    yum install -y mysql-server
+4.启动mysql服务
+    service mysqld start
+5.设置开机启动mysql服务
+    chkconfig mysqld on
+
+UPDATE user SET Password=PASSWORD('newpassword') where USER='root';（修改用户的登录密码）
+
+报错：mysql远程连接 Host * is not allowed to connect to this MySQL server
+
+在装有MySQL的机器上登录MySQL mysql -u root -p密码
+执行use mysql;
+执行update user set host = '%' where user = 'root';这一句执行完可能会报错，不用管它。
+执行FLUSH PRIVILEGES;
+
+经过上面4步，就可以解决这个问题了。 
+注: 第四步是刷新MySQL的权限相关表，一定不要忘了，我第一次的时候没有执行第四步，结果一直不成功，最后才找到这个原因。
+
+
+
+<!-- 解决新建项目报错 -->
+<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>

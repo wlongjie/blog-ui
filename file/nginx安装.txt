@@ -1,0 +1,45 @@
+1.如果要安装nginx，需要编译，则需要安装相关的支持包
+yum install gcc-c++(必须)
+是一个perl库，包括正则表达式库
+yum install -y pcre pcre-devel
+ 提供很多压缩和解压的方式，nginx使用zlib对http包的内容进行gzip.
+yum install -y zlib zlib-devel
+是一个强大的套接字屋密码库(必须)
+yum install -y openssl openssl-devel
+
+2.解压
+tar -xzvf /opt/toolsnginx-1.16.0.tar.gz
+
+3.进入nginx文件夹，指定了nginx的安装目录，同时安装了ssl模块
+./configure --prefix=/usr/local/nginx --with-http_ssl_module
+
+4.执行编译和安装
+make && make install
+
+5.添加nginx软连接
+echo $PATH 查看环境变量
+ln -s /usr/local/nginx/sbin/nginx /usr/local/sbin/
+
+6.nginx 命令查看
+nginx -h
+
+7.指定nginx配置文件(不指定虽然有默认，但是有些操作会报错)
+nginx -c configLocation
+
+8.常用命令
+nginx -s stop/quit
+nginx -s stop 强制停止nginx,比较暴力的方式，不管当前工作进程是否完成(不推荐的方式)
+nginx -s quit 优雅的停止nginx,比较温和的方式，使当前工作进程执行完成。
+nginx -s reload 重新加载配置文件
+
+9.nginx启动后，浏览器访问不到可能是因为防火墙
+
+10.将nginx添加到开机自启
+
+11.判断nginx是否正常启动
+ps -ef|grep nginx
+
+创建文件 touch
+
+注：
+1.隐藏nginx版本号
