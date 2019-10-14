@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Layout from '@/view/Layout'
+import Layout from '@/layout'
 
 Vue.use(Router)
 
@@ -9,8 +9,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'First Page',
       component: Layout
-    }
+    },
+    { path: '*', redirect: '/404', hidden: true }
   ]
 })
