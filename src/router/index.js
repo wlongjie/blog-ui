@@ -10,7 +10,6 @@ export default new Router({
     {
       path: '/',
       component: Layout
-    },
-    { path: '*', redirect: '/404', hidden: true }
+    }
   ]
 })
