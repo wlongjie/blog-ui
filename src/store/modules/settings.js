@@ -4,7 +4,7 @@ import defaultSettings from '@/settings'
 const { showSettings, tagsView, fixedHeader, sidebarLogo } = defaultSettings
 
 const settings = {
-  state : {
+  state: {
     theme: variables.theme,
     showSettings: showSettings,
     tagsView: tagsView,
