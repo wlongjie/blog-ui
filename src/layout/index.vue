@@ -19,7 +19,8 @@ export default {
   path: '/redirect',
   components: {
     Navbar,
-    AppMain
+    AppMain,
+    Sidebar
   },
   computed: {
     ...mapState({
