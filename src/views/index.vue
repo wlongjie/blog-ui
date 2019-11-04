@@ -1,5 +1,6 @@
 <template>
-  <div >
+  <div id="navbar">
+    我是nav
   </div>
 </template>
 

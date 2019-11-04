@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Layout from '@/layout'
+import sidebarRouter from './modules/sidebar'
 
 Vue.use(Router)
 
@@ -10,6 +11,7 @@ export default new Router({
     {
       path: '/',
       component: Layout
-    }
+    },
+    ...sidebarRouter
   ]
 })
