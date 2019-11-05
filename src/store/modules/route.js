@@ -1,7 +1,10 @@
-import sidebarRoutes from '@/router/modules/sidebar'
+import sidebar from '@/router/modules/sidebar'
 
 const state = {
-  sidebarRoutes: sidebarRoutes
+  sidebarRoutes: sidebar.sidebarRoutes
 }
 
-export default { state }
+export default {
+  namespaced: true,
+  state
+}
