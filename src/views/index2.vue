@@ -1,6 +1,6 @@
 <template>
   <div id="navbar">
-    我是ninex1
+    我是inex2
   </div>
 </template>
 

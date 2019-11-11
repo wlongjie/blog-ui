@@ -1,15 +1,14 @@
 <template>
-<!-- v-if="!item.hidden" -->
-  <div class="menu-wrapper">
-    <el-submenu v-if="!isNest" index="item.path" popper-append-to-body>
+  <div v-if="!item.hidden" class="menu-wrapper">
+    <el-submenu v-if="!isNext" index="item.path" popper-append-to-body>
       <template slot="title">
         <el-badge value="" >
-          <span size="small">菜单</span>
+          <span size="small">{{ item.meta.title }}</span>
         </el-badge>
       </template>
       <sidebar-item v-for="route in item.children" :key="route.path" :isNext="true" :item="route" class="nest-menu"/>
     </el-submenu>
-    <el-menu-item v-else index="item.path">菜单</el-menu-item>
+    <el-menu-item v-else @click="addTag" >{{ item.meta.title }}</el-menu-item>
   </div>
 </template>
 
@@ -22,14 +21,15 @@ export default {
       type: Object,
       required: true
     },
-    isNest: {
+    isNext: {
       type: Boolean,
       default: false
     }
   },
-  mounted() {
-    console.log(this.item)
-    console.log(this.item.children)
+  methods: {
+    addTag() {
+      console.log(this.item.meta.title)
+    }
   }
 }
 </script>
